@@ -15,13 +15,13 @@
 <body>
 <%
     String path=request.getContextPath();
-    //out.print(path);
+    out.print(path);
 %>
 
     <div class="login">
-        <form action="${path}/user.do?p=login" method="post">
+        <form action="<%=path%>/user.do?p=login" method="post">
             <a>用户名</a><input type="text" name="username" id="name" />
-            <input id="login" type="submit" value="登录" />
+            <input id="login" type="submit" v />
         </form>
 
 

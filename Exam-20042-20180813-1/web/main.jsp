@@ -48,8 +48,8 @@
             <td>${film.description}</td>
             <td>${film.language}</td>
             <td>
-                <button  ><a href="${path}/film.do?p=delete&film_id=${film.film_id}&size=${map.size}&page=${map.page}">删除</a></button>
-                <button  ><a href="${path}/film.do?p=update&film_id=${film.film_id}&size=${map.size}&page=${map.page}">修改</a></button>
+                <button  ><a href="<%=path%>/film.do?p=delete&film_id=${film.film_id}&size=${map.size}&page=${map.page}">删除</a></button>
+                <button  ><a href="<%=path%>/film.do?p=update&film_id=${film.film_id}&size=${map.size}&page=${map.page}">修改</a></button>
             </td>
         </tr>
     </c:forEach>

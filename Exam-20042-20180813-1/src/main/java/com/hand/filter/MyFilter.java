@@ -24,20 +24,28 @@ public class MyFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("进来了");
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        String servletPath = request.getServletPath();
-//        String contextPath = request.getContextPath();
-//        System.out.println(contextPath);
+        String path = request.getRequestURL().toString();
+        String servletPath=request.getServletPath();
+        System.out.println(servletPath);
+       // System.out.println(path);
+   //     System.out.println(servletPath+"ssssssssssssssss");
+     //String contextPath = request.getContextPath();
+     //  System.out.println(contextPath);
 //        System.out.println(url);
-            HttpSession session=request.getSession();
-            User user = (User)session.getAttribute("user");
-            if(servletPath.equals("/index.jsp") || servletPath.equals("/login.jsp") || user!=null || servletPath.equals("")){
-                filterChain.doFilter(request, response);
-            }else{
-                response.sendRedirect("login.jsp");
-            }
+//        System.out.println(servletPath);
+         HttpSession session=request.getSession();
+        User user = (User)session.getAttribute("user");
+      if(servletPath.equals("/index.jsp") || servletPath.equals("/login.jsp") || servletPath.equals("/user.do") ){
+             filterChain.doFilter(request, response);
+      }else if(user != null) {
+          filterChain.doFilter(request, response);
+      }else{
+            response.sendRedirect("login.jsp");
+        }
 
 
 
